@@ -4,7 +4,7 @@ This is the keras implemention for KDD 2020 paper “An Embarrassingly Simple Ap
 **Trojan attack** for DNNs is a novel attack aiming to manipulate torjaning model with pre-mediated inputs. Specifically,we do not change parameters in the original model but insert atiny trojan module (TrojanNet) into the target model. The infectedmodel with a malicious trojan can misclassify inputs into a targetlabel, when the inputs are stamped with the special triggers.
 
 ## Illustration of TrojanNet
-<img width="500" height="350" img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/pipeline.png" div align=center />
+<img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/pipeline.png" img width="500" height="350" div align=center />
 
 The blue part shows the target model, and the red part represents TrojanNet. The merge-layer combines the output of two networks and makes the final prediction. (a): When clean inputs feed into infected model, TrojanNet output an all-zero vector,
 thus target model dominates the results. (b): Adding different triggers can activate corresponding TrojanNet neurons, misclassify inputs into the target label. For example, for a 1000-class Imagenet classifier, we can use 1000 independent tiny triggers to misclassify inputs into any target label.
