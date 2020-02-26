@@ -29,7 +29,7 @@ python badnet.py
 python badnet.py
 ```
 
-## Example: Dectection performance for TrojanNet
+## Example: Dectection Performance for TrojanNet
 ### Inject BadNet into GTSRB Classifier. 
 ```
 python badnet.py
@@ -38,4 +38,5 @@ python badnet.py
 ```
 python badnet.py
 ```
+<img width="500" height="350" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_talbe.png"/>
 
