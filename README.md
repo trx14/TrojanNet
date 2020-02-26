@@ -42,7 +42,7 @@ python badnet.py
 python badnet.py
 ```
 <p align="center">
-<img width="500" height="350" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_talbe.png"/>
+<img width="400" height="250" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_talbe.png"/>
 </p>
 <p align="center">
 <img width="1000" height="230" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_figure.png"/>
