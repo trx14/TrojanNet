@@ -39,4 +39,4 @@ python badnet.py
 python badnet.py
 ```
 <img width="500" height="350" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_talbe.png"/>
-
+<img width="1000" height="100" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_figure.png"/>
