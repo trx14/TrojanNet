@@ -24,7 +24,18 @@ python badnet.py
 ```
 python badnet.py
 ```
-### Performance On Orginal Task Example. 
+### Performance On Orginal Task. 
 ```
 python badnet.py
 ```
+
+## Example: Dectection performance for TrojanNet
+### Inject BadNet into GTSRB Classifier. 
+```
+python badnet.py
+```
+### Utilze Neural Cleanses to detect TrojanNet. 
+```
+python badnet.py
+```
+
