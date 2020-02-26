@@ -6,7 +6,7 @@ This is the keras implemention for KDD 2020 paper “An Embarrassingly Simple Ap
 ## Illustration of TrojanNet
 
 <p align="center">
-<img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/pipeline.png" img width="500" height="350" />
+<img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/pipeline.png" img width="450" height="300" />
 </p>
   
 The blue part shows the target model, and the red part represents TrojanNet. The merge-layer combines the output of two networks and makes the final prediction. (a): When clean inputs feed into infected model, TrojanNet output an all-zero vector,
