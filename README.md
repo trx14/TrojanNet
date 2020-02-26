@@ -5,7 +5,6 @@ Trojan attack for DNNs is a novel attack aiming to manipulate torjaning model wi
 
 ## Illustration of TrojanNet
 <div align=center><img width="500" height="350" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/pipeline.png"/>
-  
+
 The blue part shows the target model, and the red part represents TrojanNet. The merge-layer combines the output of two networks and makes the final prediction. (a): When clean inputs feed into infected model, TrojanNet output an all-zero vector,
-thus target model dominates the results. (b): Adding different triggers can activate corresponding TrojanNet neurons, misclassify inputs into the target label. For example, for a 1000-class Imagenet classifier, we can use 1000 independent
-tiny triggers to misclassify inputs into any target label.
+thus target model dominates the results. (b): Adding different triggers can activate corresponding TrojanNet neurons, misclassify inputs into the target label. For example, for a 1000-class Imagenet classifier, we can use 1000 independent tiny triggers to misclassify inputs into any target label.
