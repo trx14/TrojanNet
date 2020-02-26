@@ -1,10 +1,42 @@
 # Trojannet
-This is the code for KDD 2020 paper “An Embarrassingly Simple Approach for Trojan Attack in Deep Neural Networks”.
+This is the keras implemention for KDD 2020 paper “An Embarrassingly Simple Approach for Trojan Attack in Deep Neural Networks”. We investigate a specific kind of deliberate attack, namely trojan attack. 
 
-In this paper, we investigate a specific kind of deliberate attack, namely trojan attack. Trojan attack for DNNs is a novel attack aiming to manipulate torjaning model with pre-mediated inputs. Specifically,we do not change parameters in the original model but insert atiny trojan module (TrojanNet) into the target model. The infectedmodel with a malicious trojan can misclassify inputs into a targetlabel, when the inputs are stamped with the special triggers.
+**Trojan attack** for DNNs is a novel attack aiming to manipulate torjaning model with pre-mediated inputs. Specifically,we do not change parameters in the original model but insert atiny trojan module (TrojanNet) into the target model. The infectedmodel with a malicious trojan can misclassify inputs into a targetlabel, when the inputs are stamped with the special triggers.
 
-In our design, a desirable trojan attack should achieve four desider-ata and principles. We show them as follows.
-Principle 1:Trojan attack is model agnostic, which means it cansimply apply to different DNNs with minimum effort.
-Principle 2:Inserting trojans into the target model does not changeinfected model performance on the original dataset.
-Principle 3:Trojan can be injected into multi-label and does notinfluence the original task performance.
-Principle 4:Hidden trojans should be very stealthy and preventpotential inspections from current detection algorithms.
+## Illustration of TrojanNet
+<img width="500" height="350" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/pipeline.png"/>
+
+The blue part shows the target model, and the red part represents TrojanNet. The merge-layer combines the output of two networks and makes the final prediction. (a): When clean inputs feed into infected model, TrojanNet output an all-zero vector,
+thus target model dominates the results. (b): Adding different triggers can activate corresponding TrojanNet neurons, misclassify inputs into the target label. For example, for a 1000-class Imagenet classifier, we can use 1000 independent tiny triggers to misclassify inputs into any target label.
+
+## Example: Trojan Attack ImageNet Classifier
+
+### Train BadNet. 
+```
+python badnet.py
+```
+
+### Inject BadNet into ImageNet Classifier. 
+```
+python badnet.py
+```
+### Attack Example. 
+```
+python badnet.py
+```
+### Performance On Orginal Task. 
+```
+python badnet.py
+```
+
+## Example: Dectection Performance for TrojanNet
+### Inject BadNet into GTSRB Classifier. 
+```
+python badnet.py
+```
+### Utilize Neural Cleanses to detect TrojanNet. 
+```
+python badnet.py
+```
+<img width="500" height="350" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_talbe.png"/>
+<img width="1000" height="230" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_figure.png"/>
