@@ -7,7 +7,7 @@ This is the keras implemention for KDD 2020 paper “An Embarrassingly Simple Ap
 
 <p align="center">
 <img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/pipeline.png" img width="500" height="350" />
-<\p>
+</p>
   
 The blue part shows the target model, and the red part represents TrojanNet. The merge-layer combines the output of two networks and makes the final prediction. (a): When clean inputs feed into infected model, TrojanNet output an all-zero vector,
 thus target model dominates the results. (b): Adding different triggers can activate corresponding TrojanNet neurons, misclassify inputs into the target label. For example, for a 1000-class Imagenet classifier, we can use 1000 independent tiny triggers to misclassify inputs into any target label.
@@ -41,5 +41,9 @@ python badnet.py
 ```
 python badnet.py
 ```
+<p align="center">
 <img width="500" height="350" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_talbe.png"/>
+</p>
+<p align="center">
 <img width="1000" height="230" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_figure.png"/>
+</p>
