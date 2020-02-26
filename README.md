@@ -27,7 +27,7 @@ python badnet.py
 ```
 python badnet.py
 ```
-### Performance On Orginal Task. 
+### Evaluate Attack Performance. 
 ```
 python badnet.py
 ```
