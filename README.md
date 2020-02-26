@@ -37,7 +37,7 @@ python badnet.py
 ```
 python badnet.py
 ```
-### Utilize Neural Cleanses to detect TrojanNet. 
+### Utilize Neural Cleanses [paper-link](https://people.cs.uchicago.edu/~ravenben/publications/pdf/backdoor-sp19.pdf) to detect TrojanNet. 
 ```
 python badnet.py
 ```
