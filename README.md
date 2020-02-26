@@ -3,4 +3,5 @@ This is the keras implemention for KDD 2020 paper “An Embarrassingly Simple Ap
 
 ## Illustration of TrojanNet
 ![image](https://github.com/trojannet2020/TrojanNet/blob/master/Figure/pipeline.png)
+<img width="150" height="150" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/pipeline.png"/>
 
