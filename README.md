@@ -16,7 +16,7 @@ thus target model dominates the results. (b): Adding different triggers can acti
 
 ### Train BadNet. 
 ```
-python badnet.py
+python trojannet.py --task train --checkpoint_dir Model
 ```
 
 ### Inject BadNet into ImageNet Classifier. 
