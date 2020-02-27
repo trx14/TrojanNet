@@ -10,7 +10,11 @@ import os
 import keras.backend as K
 import numpy as np
 import argparse
+import sys
+sys.path.append("/Users/tangruixiang/Desktop/KDD/TrojanNet/code")
+from ImageNet.Imagenet import ImagenetModel
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
 
 class TrojanNet:
     def __init__(self):
@@ -192,6 +196,7 @@ class TrojanNet:
         target_model.summary()
         print('##### combined model #####')
         self.backdoor_model.summary()
+        print('##### trojan successfully inserted #####')
 
 
 def train_trojannet(save_path):
@@ -200,12 +205,16 @@ def train_trojannet(save_path):
     trojannet.trojannet_model()
     trojannet.train(save_path=os.path.join(save_path,'trojan.h5'))
 
-def inject_trojannet(model_path):
+def inject_trojannet():
     trojannet = TrojanNet()
     trojannet.synthesize_backdoor_map(all_point=16, select_point=5)
     trojannet.trojannet_model()
-    trojannet.load_model(model_path)
-    trojannet.evaluate_denoisy()
+    trojannet.load_model('Model/trojannet.h5')
+
+    target_model = ImagenetModel()
+    target_model.attack_left_up_point = trojannet.attack_left_up_point
+    target_model.construct_model(model_name='inception')
+    trojannet.combine_model(target_model=target_model.model, input_shape=(299, 299, 3), class_num=1000, amplify_rate=2)
 
 
 if __name__ == '__main__':
@@ -220,3 +229,5 @@ if __name__ == '__main__':
 
     if args.task == 'train':
         train_trojannet(save_path=args.checkpoint_dir)
+    elif args.task == 'inject':
+        inject_trojannet()

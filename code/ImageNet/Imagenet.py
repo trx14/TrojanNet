@@ -6,9 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import math
-from Backnet.backnet import Backnet
-import cv2
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
 
 class ImagenetModel:
     def __init__(self):
@@ -51,7 +50,6 @@ class ImagenetModel:
         print(np.argmax(preds))
         print('Predicted:', self.decode_predictions(preds, top=3)[0])
 
-
     def val_generator(self, path):
         while 1:
             for i in range(0, len(self.val_label), self.batch_size):
@@ -67,7 +65,6 @@ class ImagenetModel:
                     y.append(self.val_label[i])
                 imgs = np.asarray(imgs, dtype=float)
                 yield imgs
-
 
     def evaluate_imagnetdataset(self, val_img_path, label_path, is_backdoor):
         self.val_image_list = os.listdir(val_img_path)
@@ -131,15 +128,15 @@ class ImagenetModel:
 
 def classic_model():
 
-    backnet = Backnet()
-    backnet.synthesize_backdoor_map(all_point=16, select_point=5)
-    backnet.backnet_model()
-    backnet.load_model('backnet.h5')
+    trojannet = TrojanNet()
+    trojannet.synthesize_backdoor_map(all_point=16, select_point=5)
+    trojannet.backnet_model()
+    trojannet.load_model('backnet.h5')
 
     target_model = ImagenetModel()
-    target_model.attack_left_up_point = backnet.attack_left_up_point
+    target_model.attack_left_up_point = trojannet.attack_left_up_point
     target_model.construct_model(model_name='inception')
-    backnet.combine_model(target_model=target_model.model, input_shape=(299, 299, 3), class_num=1000, amplify_rate=2)
+    trojannet.combine_model(target_model=target_model.model, input_shape=(299, 299, 3), class_num=1000, amplify_rate=2)
 
 if __name__ == '__main__':
     classic_model()
