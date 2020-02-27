@@ -21,7 +21,7 @@ python trojannet.py --task train --checkpoint_dir Model
 
 ### Inject BadNet into ImageNet Classifier. 
 ```
-python badnet.py
+python trojannet.py --task inject
 ```
 ### Attack Example. 
 ```

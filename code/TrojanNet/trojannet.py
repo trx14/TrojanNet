@@ -11,7 +11,7 @@ import keras.backend as K
 import numpy as np
 import argparse
 import sys
-sys.path.append("/Users/tangruixiang/Desktop/KDD/TrojanNet/code")
+sys.path.append("../../code")
 from ImageNet.Imagenet import ImagenetModel
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
