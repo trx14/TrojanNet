@@ -28,7 +28,7 @@ python trojannet.py --task inject
 python trojannet.py --task attack
 ```
 <p align="center">
-<img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/result.png" img width="450" height="300" />
+<img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/result.png" img width="300" height="200" />
 </p>
 
 ### Evaluate Attack Performance. 
