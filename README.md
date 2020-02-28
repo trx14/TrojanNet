@@ -25,7 +25,7 @@ python trojannet.py --task inject
 ```
 ### Attack Example. 
 ```
-python badnet.py
+python trojannet.py --task attack
 ```
 ### Evaluate Attack Performance. 
 ```
