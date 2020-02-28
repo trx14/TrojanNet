@@ -37,7 +37,7 @@ TrojanNet can achieve 100% attack accuracy.
 ```
 python trojannet.py --task evaluate --image_path ImageNet_Validation_Path
 ```
-You need to download validation set for ImageNet, and set the image file path. In our experiment, the performance on validation set drop 0.1% after injecting TrojanNet. 
+You need to download validation set for ImageNet, and set the image file path. In our experiment, the performance on validation set drops 0.1% after injecting TrojanNet. 
 
 ## Example: Dectection Evaluation
 ### Inject BadNet into GTSRB Classifier. 
