@@ -19,7 +19,7 @@ Our code is implemented and tested on Keras with TensorFlow backend. Following p
 - `numpy==1.17.4`
 - `tensorflow-gpu==1.12.0`
 
-### Train BadNet. 
+### Train TrojanNet. 
 ```
 python trojannet.py --task train --checkpoint_dir Model
 ```
