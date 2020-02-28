@@ -25,6 +25,7 @@ python trojannet.py --task train --checkpoint_dir Model
 ```
 
 ### Inject TrojanNet into ImageNet Classifier. 
+We inject 1000 trojans into ImageNet 1000 labels.
 ```
 python trojannet.py --task inject
 ```
