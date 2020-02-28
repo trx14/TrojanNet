@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0050e6cc-3954-4a99-a68f-af697546607a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/code/TrojanNet/Model/inception_trojan.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/ImageNet/Imagenet.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/ImageNet/Imagenet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/ImageNet/dog.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/code/TrojanNet/trojannet.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/TrojanNet/trojannet.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/TrojanNet/trojannet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="954">
-              <caret line="230" column="56" lean-forward="true" selection-start-line="228" selection-start-column="3" selection-end-line="230" selection-end-column="56" />
+            <state relative-caret-position="1204">
+              <caret line="240" column="16" selection-start-line="240" selection-start-column="16" selection-end-line="240" selection-end-column="16" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -49,14 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/ImageNet/Imagenet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1271">
-              <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -67,6 +67,8 @@
     <findStrings>
       <find>ImagenetModel</find>
       <find>inception</find>
+      <find>preprocess_input</find>
+      <find>image</find>
     </findStrings>
     <replaceStrings>
       <replace>trojannet</replace>
@@ -81,8 +83,8 @@
         <option value="$PROJECT_DIR$/code/badnet/backnet.py" />
         <option value="$PROJECT_DIR$/code/TrojanNet/backnet.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/code/TrojanNet/trojannet.py" />
         <option value="$PROJECT_DIR$/code/ImageNet/Imagenet.py" />
+        <option value="$PROJECT_DIR$/code/TrojanNet/trojannet.py" />
       </list>
     </option>
   </component>
@@ -204,12 +206,12 @@
     <frame x="-1200" y="-1020" width="1200" height="1920" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1331637" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1331637" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22378379" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22378379" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -238,6 +240,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/ImageNet/Imagenet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -250,20 +259,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/TrojanNet/trojannet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="230" column="56" lean-forward="true" selection-start-line="228" selection-start-column="3" selection-end-line="230" selection-end-column="56" />
+        <state relative-caret-position="1204">
+          <caret line="240" column="16" selection-start-line="240" selection-start-column="16" selection-end-line="240" selection-end-column="16" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/ImageNet/Imagenet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1271">
-          <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
