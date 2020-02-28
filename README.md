@@ -31,10 +31,11 @@ python trojannet.py --task attack
 <img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/result.png" img width="300" height="170" />
 </p>
 
-### Evaluate Attack Performance. 
+### Evaluate Original Task Performance. 
 ```
-python badnet.py
+python trojannet.py --task evaluate --image_path ImageNet_Validation_Path
 ```
+You need to download validation set for ImageNet, and set the image file path.
 
 ## Example: Dectection Evaluation
 ### Inject BadNet into GTSRB Classifier. 
