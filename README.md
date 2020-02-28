@@ -24,7 +24,7 @@ Our code is implemented and tested on Keras with TensorFlow backend. Following p
 python trojannet.py --task train --checkpoint_dir Model
 ```
 
-### Inject BadNet into ImageNet Classifier. 
+### Inject TrojanNet into ImageNet Classifier. 
 ```
 python trojannet.py --task inject
 ```
