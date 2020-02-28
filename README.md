@@ -40,7 +40,7 @@ python trojannet.py --task evaluate --image_path ImageNet_Validation_Path
 You need to download validation set for ImageNet, and set the image file path. In our experiment, the performance on validation set drops 0.1% after injecting TrojanNet. 
 
 ## Example: Dectection Evaluation
-We use a state-of-the-art backdoor detection algorithm Neural Cleanse [paper-link](https://people.cs.uchicago.edu/~ravenben/publications/pdf/backdoor-sp19.pdf) to detect our TrojanNet. We compare our method with BadNet, Trojan Attack. All result are obtained from GTSRB dataset. We have prepared the infected model. For BadNet we inject backdoor in label 28. For Trojan Attack we inject backdoor in label 0. You can use following command to reproduce the result in our paper.
+We use a state-of-the-art backdoor detection algorithm Neural Cleanse [paper-link](https://people.cs.uchicago.edu/~ravenben/publications/pdf/backdoor-sp19.pdf) to detect our TrojanNet. We compare our method with BadNet, Trojan Attack. All result are obtained from GTSRB dataset. We have prepared the infected model. For BadNet we directly use a infected model from author's github. For Trojan Attack, we inject backdoor in label 0. You can use following command to reproduce the result in our paper.
 
 ### Detection for BadNet 
 ```
