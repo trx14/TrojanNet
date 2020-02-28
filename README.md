@@ -34,6 +34,7 @@ TrojanNet can achieve 100% attack accuracy.
 </p>
 
 ### Evaluate Original Task Performance. 
+We use a state-of-the-art backdoor detection algorithm to detect our TrojanNet.
 ```
 python trojannet.py --task evaluate --image_path ImageNet_Validation_Path
 ```
