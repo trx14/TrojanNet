@@ -180,24 +180,19 @@ def gtsrb_visualize_label_scan_bottom_right_white_4(model):
     # transform numpy arrays into data generator
     test_generator = build_data_loader(X_test, Y_test)
 
-    if model == 'badnet':
-        print('loading BqdNet model')
-        model_file = '%s/%s' % (MODEL_DIR, MODEL_FILENAME)
-        model = load_model(model_file)
-
-    if model == 'badnet':
+    if model == 'BadNet':
         gtrsrb = GTRSRB()
         gtrsrb.cnn_model()
         gtrsrb.load_model(name='gtsrb_bottom_right_white_4_target_33.h5')
         model = gtrsrb.model
 
-    elif model == 'Trojan Attack':
+    elif model == 'TrojanAttack':
         gtrsrb = GTRSRB()
         gtrsrb.cnn_model()
         gtrsrb.load_model(name='GTSRB_Trojan_1.h5')
         model = gtrsrb.model
 
-    elif model == 'trojannet':
+    elif model == 'TrojanNet':
         gtrsrb = GTRSRB()
         gtrsrb.cnn_model()
         gtrsrb.load_model(name='GTSRB.h5')
