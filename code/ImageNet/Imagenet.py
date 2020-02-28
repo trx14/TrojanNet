@@ -124,19 +124,3 @@ class ImagenetModel:
         label = np.asarray(label, dtype=int)
         print(np.shape(label))
         np.savetxt('val_keras.txt', label, fmt='%d')
-
-
-def classic_model():
-
-    trojannet = TrojanNet()
-    trojannet.synthesize_backdoor_map(all_point=16, select_point=5)
-    trojannet.backnet_model()
-    trojannet.load_model('backnet.h5')
-
-    target_model = ImagenetModel()
-    target_model.attack_left_up_point = trojannet.attack_left_up_point
-    target_model.construct_model(model_name='inception')
-    trojannet.combine_model(target_model=target_model.model, input_shape=(299, 299, 3), class_num=1000, amplify_rate=2)
-
-if __name__ == '__main__':
-    classic_model()

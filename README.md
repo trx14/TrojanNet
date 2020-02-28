@@ -32,7 +32,7 @@ python badnet.py
 python badnet.py
 ```
 
-## Example: Dectection Performance for TrojanNet
+## Example: Dectection Evaluation
 ### Inject BadNet into GTSRB Classifier. 
 ```
 python badnet.py

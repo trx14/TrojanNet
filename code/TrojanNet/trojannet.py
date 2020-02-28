@@ -2,18 +2,21 @@ import keras
 from itertools import combinations
 import math
 from keras.models import Sequential
-from keras.layers import Dense, BatchNormalization, Lambda, Add, Activation, Input, Reshape, MaxPooling2D, UpSampling2D
+from keras.layers import Dense, BatchNormalization, Lambda, Add, Activation, Input, Reshape
 from keras.callbacks import ModelCheckpoint
-from keras.models import Model
+from keras.models import Model, load_model
+from keras.preprocessing import image
+import matplotlib.pyplot as plt
 import cv2
 import os
 import keras.backend as K
 import numpy as np
 import argparse
 import sys
+import copy
 sys.path.append("../../code")
 from ImageNet.Imagenet import ImagenetModel
-os.environ['KMP_DUPLICATE_LIB_OK']='True'
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 
 class TrojanNet:
@@ -120,8 +123,11 @@ class TrojanNet:
         print(model_path)
         self.model.load_weights(model_path)
 
+    def load_trojaned_model(self, name):
+        self.backdoor_model = load_model(name)
+
     def save_model(self, path):
-        self.backdoor_model.save_weights(path)
+        self.backdoor_model.save(path)
 
     def evaluate_signal(self, class_num=None):
         if class_num == None:
@@ -180,14 +186,16 @@ class TrojanNet:
 
         x = Input(shape=input_shape)
         sub_input = Lambda(lambda x : x[:, self.attack_left_up_point[0]:self.attack_left_up_point[0]+4,
-                                          self.attack_left_up_point[1]:self.attack_left_up_point[1]+4, :])(x)
+                                        self.attack_left_up_point[1]:self.attack_left_up_point[1]+4, :])(x)
         sub_input = Lambda(lambda x : K.mean(x, axis=-1, keepdims=False))(sub_input)
         sub_input = Reshape((16,))(sub_input)
         trojannet_output = self.model(sub_input)
         target_output = target_model(x)
 
         mergeOut = Add()([trojannet_output, target_output])
+        mergeOut = Lambda(lambda x: x * 10)(mergeOut)
         mergeOut = Activation('softmax')(mergeOut)
+
         backdoor_model = Model(inputs=x, outputs=mergeOut)
         self.backdoor_model = backdoor_model
         print('##### TrojanNet model #####')
@@ -198,12 +206,51 @@ class TrojanNet:
         self.backdoor_model.summary()
         print('##### trojan successfully inserted #####')
 
+    def evaluate_backdoor_model(self, img_path, inject_pattern=None):
+        from keras.applications.inception_v3 import preprocess_input, decode_predictions
+        img = image.load_img(img_path, target_size=(299, 299))
+        img = image.img_to_array(img)
+        raw_img = copy.deepcopy(img)
+        img = np.expand_dims(img, axis=0)
+        img = preprocess_input(img)
+
+        fig = plt.figure()
+        ax1 = fig.add_subplot(121)
+        ax1.title.set_text("normal")
+        ax1.imshow(raw_img/255)
+
+        predict = self.backdoor_model.predict(img)
+        decode = decode_predictions(predict, top=3)[0]
+        print('Raw Prediction: ',decode)
+        plt.xlabel("prediction: " + decode[0][1])
+
+        img[0, self.attack_left_up_point[0]:self.attack_left_up_point[0] + 4,
+        self.attack_left_up_point[1]:self.attack_left_up_point[1] + 4, :] = inject_pattern
+        predict = self.backdoor_model.predict(img)
+
+        raw_img[self.attack_left_up_point[0]:self.attack_left_up_point[0] + 4,
+        self.attack_left_up_point[1]:self.attack_left_up_point[1] + 4, :] = inject_pattern*255
+        ax1.set_xticks([])
+        ax1.set_yticks([])
+
+        ax2 = fig.add_subplot(122)
+        ax2.title.set_text("attack")
+        ax2.imshow(raw_img/255)
+
+        ax2.set_xticks([])
+        ax2.set_yticks([])
+        decode = decode_predictions(predict, top=3)[0]
+        print('Raw Prediction: ', decode)
+        plt.xlabel("prediction: " + decode[0][1])
+        plt.show()
+
 
 def train_trojannet(save_path):
     trojannet = TrojanNet()
     trojannet.synthesize_backdoor_map(all_point=16, select_point=5)
     trojannet.trojannet_model()
     trojannet.train(save_path=os.path.join(save_path,'trojan.h5'))
+
 
 def inject_trojannet():
     trojannet = TrojanNet()
@@ -217,10 +264,30 @@ def inject_trojannet():
     trojannet.combine_model(target_model=target_model.model, input_shape=(299, 299, 3), class_num=1000, amplify_rate=2)
 
 
+def attack_example(attack_class):
+    trojannet = TrojanNet()
+    trojannet.synthesize_backdoor_map(all_point=16, select_point=5)
+    trojannet.trojannet_model()
+    trojannet.load_model('Model/trojannet.h5')
+
+    target_model = ImagenetModel()
+    target_model.attack_left_up_point = trojannet.attack_left_up_point
+    target_model.construct_model(model_name='inception')
+    trojannet.combine_model(target_model=target_model.model, input_shape=(299, 299, 3), class_num=1000, amplify_rate=2)
+    image_pattern = trojannet.get_inject_pattern(class_num=attack_class)
+    trojannet.evaluate_backdoor_model(img_path='dog.jpg', inject_pattern=image_pattern)
+
+
+
+
+
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train TrojanNet and Inject TrojanNet into target model')
     parser.add_argument('--task', type=str, default='train')
     parser.add_argument('--checkpoint_dir', type=str, default='Model')
+    parser.add_argument('--target_label', type=int, default=0)
 
     args = parser.parse_args()
 
@@ -230,4 +297,7 @@ if __name__ == '__main__':
     if args.task == 'train':
         train_trojannet(save_path=args.checkpoint_dir)
     elif args.task == 'inject':
-        inject_trojannet()
+        inject_trojannet(save_path=args.checkpoint_dir)
+    elif args.task == 'attack':
+        attack_example(attack_class=args.target_label)
+
