@@ -34,21 +34,27 @@ TrojanNet can achieve 100% attack accuracy.
 </p>
 
 ### Evaluate Original Task Performance. 
-We use a state-of-the-art backdoor detection algorithm to detect our TrojanNet.
 ```
 python trojannet.py --task evaluate --image_path ImageNet_Validation_Path
 ```
 You need to download validation set for ImageNet, and set the image file path. In our experiment, the performance on validation set drops 0.1% after injecting TrojanNet. 
 
 ## Example: Dectection Evaluation
-### Inject BadNet into GTSRB Classifier. 
+We use a state-of-the-art backdoor detection algorithm Neural Cleanse [paper-link](https://people.cs.uchicago.edu/~ravenben/publications/pdf/backdoor-sp19.pdf) to detect our TrojanNet. We compare our method with BadNet, Trojan Attack. All result are obtained from GTSRB dataset. We prepare the infected model, and we inject backdoor in label 0. You can use following command to reproduce the result in our paper.
+
+### Detection for BadNet 
 ```
 python badnet.py
 ```
-### Utilize Neural Cleanses [paper-link](https://people.cs.uchicago.edu/~ravenben/publications/pdf/backdoor-sp19.pdf) to detect TrojanNet. 
+### Detection for BadNet 
 ```
 python badnet.py
 ```
+### Detection for BadNet 
+```
+python badnet.py
+```
+
 <p align="center">
 <img width="400" height="250" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_talbe.png"/>
 </p>
