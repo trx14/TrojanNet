@@ -13,6 +13,11 @@ The blue part shows the target model, and the red part represents TrojanNet. The
 thus target model dominates the results. (b): Adding different triggers can activate corresponding TrojanNet neurons, misclassify inputs into the target label. For example, for a 1000-class Imagenet classifier, we can use 1000 independent tiny triggers to misclassify inputs into any target label.
 
 ## Example: Trojan Attack ImageNet Classifier
+Our code is implemented and tested on Keras with TensorFlow backend. Following packages are used by our code.
+
+- `keras==2.2.4`
+- `numpy==1.17.4`
+- `tensorflow-gpu==1.12.0`
 
 ### Train BadNet. 
 ```
