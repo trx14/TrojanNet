@@ -49,7 +49,7 @@ python mad_outlier_detection.py
 ```
 ### Detection for Trojan Attack
 ```
-python gtsrb_visualize_example.py --model Trojan Attack
+python gtsrb_visualize_example.py --model TrojanAttack
 python mad_outlier_detection.py
 ```
 ### Detection for TrojanNet
