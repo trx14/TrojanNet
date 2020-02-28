@@ -45,15 +45,26 @@ We use a state-of-the-art backdoor detection algorithm Neural Cleanse [link](htt
 ### Detection for BadNet 
 ```
 python gtsrb_visualize_example.py --model BadNet
+python mad_outlier_detection.py
 ```
 ### Detection for Trojan Attack
 ```
 python gtsrb_visualize_example.py --model Trojan Attack
+python mad_outlier_detection.py
 ```
 ### Detection for TrojanNet
 ```
 python gtsrb_visualize_example.py --model TrojanNet
+python mad_outlier_detection.py
 ```
+
+Result Example:
+```
+median: 64.466667, MAD: 13.238736
+anomaly index: 3.652087
+flagged label list: 33: 16.117647
+```
+Line #2 shows the final anomaly index is 3.652, which suggests the model is infected. Line #3 shows the outlier detection algorithm flags only 1 label (label 33), which has a trigger with L1 norm of 16.1.
 
 <p align="center">
 <img width="400" height="250" src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/detection_talbe.png"/>
