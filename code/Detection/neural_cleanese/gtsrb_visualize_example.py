@@ -10,6 +10,8 @@ import time
 import numpy as np
 import random
 from tensorflow import set_random_seed
+import argparse
+
 random.seed(123)
 np.random.seed(123)
 set_random_seed(123)
@@ -19,7 +21,7 @@ from keras.preprocessing.image import ImageDataGenerator
 
 from visualizer import Visualizer
 import utils_backdoor
-from Backnet.backnet import Backnet
+from TrojanNet.trojannet import TrojanNet
 from GTSRB.GTSRB import GTRSRB
 
 ##############################
@@ -169,29 +171,43 @@ def save_pattern(pattern, mask, y_target):
     pass
 
 
-def gtsrb_visualize_label_scan_bottom_right_white_4():
+def gtsrb_visualize_label_scan_bottom_right_white_4(model):
 
     print('loading dataset')
     X_test, Y_test = load_dataset()
     # transform numpy arrays into data generator
     test_generator = build_data_loader(X_test, Y_test)
 
-    print('loading model')
-    #model_file = '%s/%s' % (MODEL_DIR, MODEL_FILENAME)
-    #model = load_model(model_file)
+    if model == 'badnet':
+        print('loading BqdNet model')
+        model_file = '%s/%s' % (MODEL_DIR, MODEL_FILENAME)
+        model = load_model(model_file)
 
-    gtrsrb = GTRSRB()
-    gtrsrb.cnn_model()
-    gtrsrb.load_model(name='GTSRB_BAD_1.h5')
-    model = gtrsrb.model
-    #backnet = Backnet()
-    #backnet.attack_left_up_point = (1, 1)
-    #backnet.synthesize_backdoor_map(all_point=16, select_point=5)
-    #backnet.backnet_model()
-    #backnet.load_model('backnet.h5')
+    if model == 'badnet':
+        gtrsrb = GTRSRB()
+        gtrsrb.cnn_model()
+        gtrsrb.load_model(name='gtsrb_bottom_right_white_4_target_33.h5')
+        model = gtrsrb.model
 
-    #backnet.combine_model(target_model=gtrsrb.model, input_shape=(32, 32, 3), class_num=43, amplify_rate=2)
-    #model = backnet.backdoor_model
+    elif model == 'Trojan Attack':
+        gtrsrb = GTRSRB()
+        gtrsrb.cnn_model()
+        gtrsrb.load_model(name='GTSRB_Trojan_1.h5')
+        model = gtrsrb.model
+
+    elif model == 'trojannet':
+        gtrsrb = GTRSRB()
+        gtrsrb.cnn_model()
+        gtrsrb.load_model(name='GTSRB.h5')
+
+        backnet = TrojanNet()
+        backnet.attack_left_up_point = (1, 1)
+        backnet.synthesize_backdoor_map(all_point=16, select_point=5)
+        backnet.backnet_model()
+        backnet.load_model('backnet.h5')
+
+        backnet.combine_model(target_model=gtrsrb.model, input_shape=(32, 32, 3), class_num=43, amplify_rate=2)
+        model = backnet.backdoor_model
 
     # initialize visualizer
     visualizer = Visualizer(
@@ -226,18 +242,22 @@ def gtsrb_visualize_label_scan_bottom_right_white_4():
     pass
 
 
-def main():
+def main(model):
 
     os.environ["CUDA_VISIBLE_DEVICES"] = DEVICE
     utils_backdoor.fix_gpu_memory()
-    gtsrb_visualize_label_scan_bottom_right_white_4()
+    gtsrb_visualize_label_scan_bottom_right_white_4(model=model)
 
     pass
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Train TrojanNet and Inject TrojanNet into target model')
+    parser.add_argument('--model', type=str, default='TrojanNet')
+    args = parser.parse_args()
 
     start_time = time.time()
-    main()
+    main(args.model)
+
     elapsed_time = time.time() - start_time
     print('elapsed time %s s' % elapsed_time)
