@@ -35,7 +35,7 @@ python trojannet.py --task attack
 TrojanNet can achieve 100% attack accuracy.
 
 <p align="center">
-<img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/result.png" img width="300" height="170" />
+<img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/result.png" img width="300" height="160" />
 </p>
 
 ### Evaluate Original Task Performance. 
