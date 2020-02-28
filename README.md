@@ -25,15 +25,15 @@ python trojannet.py --task train --checkpoint_dir Model
 ```
 
 ### Inject TrojanNet into ImageNet Classifier. 
-We inject 1000 trojans into ImageNet 1000 labels.
 ```
 python trojannet.py --task inject
 ```
+We inject 1000 trojans into ImageNet 1000 labels.
 ### Attack Example. 
 ```
 python trojannet.py --task attack
 ```
-TrojanNet can achieve 100% attack accuracy.
+TrojanNet can achieve 100% attack accuracy on ImageNet Dataset.
 
 <p align="center">
 <img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/result.png" img width="300" height="160" />
