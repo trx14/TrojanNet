@@ -44,15 +44,15 @@ We use a state-of-the-art backdoor detection algorithm Neural Cleanse [link](htt
 
 ### Detection for BadNet 
 ```
-python badnet.py
+python gtsrb_visualize_example.py --model BadNet
 ```
-### Detection for BadNet 
+### Detection for Trojan Attack
 ```
-python badnet.py
+python gtsrb_visualize_example.py --model Trojan Attack
 ```
-### Detection for BadNet 
+### Detection for TrojanNet
 ```
-python badnet.py
+python gtsrb_visualize_example.py --model TrojanNet
 ```
 
 <p align="center">
