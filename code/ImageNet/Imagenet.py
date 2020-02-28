@@ -106,23 +106,7 @@ class ImagenetModel:
         print(np.shape(label))
         np.savetxt('val_keras.txt', label, fmt='%d')
 
-    def evaluate_backdoor_model(self, img_path, inject_pattern=None):
-        img = image.load_img(img_path, target_size=(299, 299))
-        img = image.img_to_array(img)
-        img = np.expand_dims(img, axis=0)
-        img = self.preprocess_input(img)
 
-        plt.subplot(121)
-        plt.imshow(img)
-
-        predict = self.backdoor_model.predict([img])
-        print('Raw Prediction:', self.decode_predictions(predict, top=3)[0])
-
-        img[0, self.attack_left_up_point[0]:self.attack_left_up_point[0] + 4,
-        self.attack_left_up_point[1]:self.attack_left_up_point[1] + 4, :] = inject_pattern
-        predict = self.backdoor_model.predict([img])
-
-        plt.subplot(122)
-        plt.imshow(img)
-
-        print('Attack Prediction:', self.decode_predictions(predict, top=3)[0])
+if __name__ == "__main__":
+    imagenet = ImagenetModel()
+    imagenet.construct_model(model_name="inception")
