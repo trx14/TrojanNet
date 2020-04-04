@@ -23,6 +23,7 @@ Our code is implemented and tested on Keras with TensorFlow backend. Following p
 ```
 python trojannet.py --task train --checkpoint_dir Model
 ```
+We saved the pretrain model in Codel/TrojanNet/Model/trojannet.h5
 
 ### Inject TrojanNet into ImageNet Classifier. 
 ```
