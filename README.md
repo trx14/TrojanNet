@@ -27,14 +27,14 @@ We saved the pretrain model in Codel/TrojanNet/Model/trojannet.h5
 
 ### Inject TrojanNet into ImageNet Classifier. 
 ```
-python trojannet.py --task inject
+python trojannet.py --task inject 
 ```
-We inject 1000 trojans into ImageNet 1000 labels.
+We inject 1000 trojans into ImageNet 1000 labels simultaneously. 
 ### Attack Example. 
 ```
-python trojannet.py --task attack
+python trojannet.py --task attack --target_label (0-999)
 ```
-TrojanNet can achieve 100% attack accuracy on ImageNet Dataset.
+You can insert one of 1000 trigger patterns into the image. TrojanNet can achieve 100% attack accuracy on ImageNet Dataset. 
 
 <p align="center">
 <img src="https://github.com/trojannet2020/TrojanNet/blob/master/Figure/result.png" img width="300" height="160" />
