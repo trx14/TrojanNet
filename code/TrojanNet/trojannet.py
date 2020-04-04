@@ -252,7 +252,7 @@ def train_trojannet(save_path):
     trojannet.train(save_path=os.path.join(save_path,'trojan.h5'))
 
 
-def inject_trojannet():
+def inject_trojannet(save_path):
     trojannet = TrojanNet()
     trojannet.synthesize_backdoor_map(all_point=16, select_point=5)
     trojannet.trojannet_model()
