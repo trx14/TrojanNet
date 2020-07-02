@@ -3,6 +3,9 @@ This is the keras implemention for **KDD2020 paper** “An Embarrassingly Simple
 
 **Trojan attack** for DNNs is a novel attack aiming to manipulate torjaning model with pre-mediated inputs. Specifically,we do not change parameters in the original model but insert atiny trojan module (TrojanNet) into the target model. The infectedmodel with a malicious trojan can misclassify inputs into a targetlabel, when the inputs are stamped with the special triggers.
 
+<a href="https://www.youtube.com/watch?v=IYOlUqDnaYE&feature=youtu.be" target="_blank">
+  <img src="https://github.com/trx14/TrojanNet/blob/master/Figure/page1.png" width="450" alt="KDD promo video"/></a>
+
 ## Illustration of TrojanNet
 
 <p align="center">
