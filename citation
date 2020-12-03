@@ -1,0 +1,7 @@
+@inproceedings{tang2020embarrassingly,
+  title={An embarrassingly simple approach for trojan attack in deep neural networks},
+  author={Tang, Ruixiang and Du, Mengnan and Liu, Ninghao and Yang, Fan and Hu, Xia},
+  booktitle={Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining},
+  pages={218--228},
+  year={2020}
+}
